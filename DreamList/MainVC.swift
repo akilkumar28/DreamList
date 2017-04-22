@@ -25,7 +25,14 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         //generateTestData()
         attemptFetch()
         noLabelCheck()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            tableview.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
